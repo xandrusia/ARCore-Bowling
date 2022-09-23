@@ -158,6 +158,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.DefaultCompany.Ar_Core_Bowling
+    Standalone: com.DefaultCompany.Ar-Core-Bowling
     iPhone: com.DefaultCompany.Ar-Core-Bowling
   buildNumber:
     Standalone: 0
