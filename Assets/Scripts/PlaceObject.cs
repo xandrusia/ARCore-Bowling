@@ -1,18 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
+[RequireComponent(typeof(ARRaycastManager))]
 public class PlaceObject : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    private GameObject objectToSpawn;
+
+    private GameObject spawnedObject;
+    private ARRaycastManager raycastManager;
+
+    static List<ARRaycastHit> hits = new List<ARRaycastHit>();
+
     void Start()
     {
-        
+        raycastManager = GetComponent<ARRaycastManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (!TryGetTouchPosition(out Vector2 touchPosition))
+        {
+            return;
+        }
+
+        if (raycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
+        {
+            var hitPose = hits[0].pose;
+
+            if (spawnedObject == null)
+            {
+                hitPose.rotation.y = Camera.main.transform.rotation.y;
+                spawnedObject = Instantiate(objectToSpawn, hitPose.position, hitPose.rotation);
+            }
+        }
+    }
+
+    bool TryGetTouchPosition(out Vector2 touchPosition)
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            touchPosition = Input.mousePosition;
+            return true;
+        }
+        touchPosition = default;
+        return false;
     }
 }
