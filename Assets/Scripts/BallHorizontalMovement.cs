@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.XR.ARFoundation;
 
 public class BallHorizontalMovement : MonoBehaviour
 {
@@ -17,7 +19,7 @@ public class BallHorizontalMovement : MonoBehaviour
     private float speed = 0.1f;
 
     [SerializeField]
-    private float shotSpeed = 10f;
+    private float shotSpeed = 50f;
 
     private bool isDefaultMovment = true;
     private Rigidbody rb;
@@ -42,29 +44,21 @@ public class BallHorizontalMovement : MonoBehaviour
     public void Shot()
     {
         this.isDefaultMovment = false;
+        this.rb.useGravity = true;
         this.rb.AddForce(Vector3.forward * shotSpeed);
     }
 
     public void ResetPosition()
     {
         this.rb.velocity = Vector3.zero;
+        this.rb.useGravity = false;
         this.gameObject.transform.position = this.startPosition;
+        this.isDefaultMovment = true;
     }
 
     void Update()
     {
-        if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
-        {
-            Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-            RaycastHit raycastHit;
-            if (Physics.Raycast(raycast, out raycastHit))
-            {
-                if (raycastHit.collider.CompareTag("Board"))
-                {
-                    Shot();
-                }
-            }
-        }
+        CheckBoardTouch();
     }
 
     /* --------------- CHANGE DIRECTION WHEN BALL REACHES LIMITER --------------- */
@@ -80,4 +74,34 @@ public class BallHorizontalMovement : MonoBehaviour
             this.speed = -this.speed;
         }
     }
+
+    private void CheckBoardTouch()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.tag == "ResetButton")
+            {
+                ResetPosition();
+            }
+
+            if (hit.collider.tag == "ShotButton")
+            {
+                Shot();
+            }
+        }
+    }
 }
+
+
+// RaycastHit hit;
+// Ray ray = yourARCamera.ScreenPointToRay(Input.GetTouch(0).position);
+// if (Physics.Raycast(ray, out hit))
+// {
+//      // Check if what is hit is the desired object
+//      if(hit.tag == "The_Tag_Of_The_Object_You_Are_Looking_For")
+//      {
+//            // User clicked the object.. Do something here..
+//      }
+// }
