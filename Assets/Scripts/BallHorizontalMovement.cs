@@ -21,7 +21,7 @@ public class BallHorizontalMovement : MonoBehaviour
     [SerializeField]
     private float shotSpeed = 50f;
 
-    private bool isDefaultMovment = true;
+    private bool isDefaultMovment = false;
     private Rigidbody rb;
     private Vector3 startPosition;
     private bool boardSpawned = false;
@@ -33,6 +33,7 @@ public class BallHorizontalMovement : MonoBehaviour
     {
         this.rb = gameObject.GetComponent<Rigidbody>();
         this.startPosition = gameObject.transform.position;
+        StartCoroutine("ChangeDefaultMovement");
     }
 
     void FixedUpdate()
@@ -47,7 +48,7 @@ public class BallHorizontalMovement : MonoBehaviour
     public void Shot()
     {
         this.isDefaultMovment = false;
-       // this.rb.useGravity = true;
+        // this.rb.useGravity = true;
         this.rb.AddForce(Vector3.forward * shotSpeed);
 
         //Allows to rotate the ball
@@ -64,10 +65,10 @@ public class BallHorizontalMovement : MonoBehaviour
 
     void Update()
     {
-        CheckBoardTouch();
+        // CheckBoardTouch();
 
         //Updates the ball's rotational speed every second
-        if(Input.touchCount > 0) 
+        if (Input.touchCount > 0)
         {
             transform.Rotate(Vector3.forward, speed * Time.deltaTime);
         }
@@ -87,23 +88,30 @@ public class BallHorizontalMovement : MonoBehaviour
         }
     }
 
-    private void CheckBoardTouch()
+    private IEnumerator ChangeDefaultMovement()
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (hit.collider.tag == "ResetButton")
-            {
-                ResetPosition();
-            }
-
-            if (hit.collider.tag == "ShotButton")
-            {
-                Shot();
-            }
-        }
+        yield return new WaitForSeconds(1);
+        this.isDefaultMovment = true;
     }
+
+    // private void CheckBoardTouch()
+    // {
+    //     RaycastHit hit;
+    //     // Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+    //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //     if (Physics.Raycast(ray, out hit))
+    //     {
+    //         if (hit.collider.tag == "ResetButton")
+    //         {
+    //             ResetPosition();
+    //         }
+
+    //         if (hit.collider.tag == "ShotButton")
+    //         {
+    //             Shot();
+    //         }
+    //     }
+    // }
 }
 
 

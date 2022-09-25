@@ -6,6 +6,7 @@ public class PinsController : MonoBehaviour
 {
 
     private Vector3 startPosition;
+    private Quaternion startRotation;
     private Rigidbody rb;
 
     // Start is called before the first frame update
@@ -13,32 +14,45 @@ public class PinsController : MonoBehaviour
     {
         this.rb = gameObject.GetComponent<Rigidbody>();
         this.startPosition = gameObject.transform.position;
+        this.startRotation = gameObject.transform.rotation;
     }
 
-    
+
     void Update()
     {
-        CheckBoardTouch();
+        // CheckBoardTouch();
     }
 
 
     public void ResetPosition()
     {
-        this.rb.useGravity = true;
+        this.rb.velocity = Vector3.zero;
+        this.rb.angularVelocity = Vector3.zero;
+        this.rb.useGravity = false;
         this.gameObject.transform.position = this.startPosition;
+        this.gameObject.transform.rotation = this.startRotation;
+        // Instantiate(gameObject, startPosition, Quaternion.identity);
     }
 
-    private void CheckBoardTouch()
+    void OnCollisionEnter(Collision collision)
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-        if (Physics.Raycast(ray, out hit))
+        if (collision.gameObject.tag == "Ball" || collision.gameObject.tag == "Pin")
         {
-            if (hit.collider.tag == "ResetButton")
-            {
-                ResetPosition();
-            }
+            this.rb.useGravity = true;
         }
     }
+
+    // private void CheckBoardTouch()
+    // {
+    //     RaycastHit hit;
+    //     Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+    //     if (Physics.Raycast(ray, out hit))
+    //     {
+    //         if (hit.collider.tag == "ResetButton")
+    //         {
+    //             ResetPosition();
+    //         }
+    //     }
+    // }
 
 }

@@ -335,7 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d1f863f6d60a4469a8d248f63c5412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 1629782337469279674, guid: 3cf28f91fb16e3949a7478a0789a02e8, type: 3}
+  objectToSpawn: {fileID: 9044617196377817753, guid: fd39450f32c96264eacd9f7aabbc3421, type: 3}
+  aRPlane: {fileID: 0}
 --- !u!1 &632382593
 GameObject:
   m_ObjectHideFlags: 0

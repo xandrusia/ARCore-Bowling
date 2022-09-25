@@ -34,7 +34,10 @@ public class PlaceObject : MonoBehaviour
             if (spawnedObject == null)
             {
                 hitPose.rotation.y = Camera.main.transform.rotation.y;
+                // hitPose.rotation.x = 0f;
+                // hitPose.rotation.z = 0f;
                 spawnedObject = Instantiate(objectToSpawn, hitPose.position, hitPose.rotation);
+                GameObject.FindObjectOfType<ARPlaneManager>().enabled = false;
             }
         }
     }
