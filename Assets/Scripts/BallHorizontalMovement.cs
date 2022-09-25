@@ -48,7 +48,7 @@ public class BallHorizontalMovement : MonoBehaviour
     public void Shot()
     {
         this.isDefaultMovment = false;
-        // this.rb.useGravity = true;
+        this.rb.useGravity = true;
         this.rb.AddForce(Vector3.forward * shotSpeed);
 
         //Allows to rotate the ball
@@ -74,6 +74,14 @@ public class BallHorizontalMovement : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "LineEnd")
+        {
+            this.ResetPosition();
+        }
+    }
+
     /* --------------- CHANGE DIRECTION WHEN BALL REACHES LIMITER --------------- */
 
     private void ChangeDirection()
@@ -93,35 +101,4 @@ public class BallHorizontalMovement : MonoBehaviour
         yield return new WaitForSeconds(1);
         this.isDefaultMovment = true;
     }
-
-    // private void CheckBoardTouch()
-    // {
-    //     RaycastHit hit;
-    //     // Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-    //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-    //     if (Physics.Raycast(ray, out hit))
-    //     {
-    //         if (hit.collider.tag == "ResetButton")
-    //         {
-    //             ResetPosition();
-    //         }
-
-    //         if (hit.collider.tag == "ShotButton")
-    //         {
-    //             Shot();
-    //         }
-    //     }
-    // }
 }
-
-
-// RaycastHit hit;
-// Ray ray = yourARCamera.ScreenPointToRay(Input.GetTouch(0).position);
-// if (Physics.Raycast(ray, out hit))
-// {
-//      // Check if what is hit is the desired object
-//      if(hit.tag == "The_Tag_Of_The_Object_You_Are_Looking_For")
-//      {
-//            // User clicked the object.. Do something here..
-//      }
-// }

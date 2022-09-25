@@ -31,6 +31,7 @@ public class PinsController : MonoBehaviour
         this.rb.useGravity = false;
         this.gameObject.transform.position = this.startPosition;
         this.gameObject.transform.rotation = this.startRotation;
+        gameObject.GetComponent<BoxCollider>().enabled = true;
         // Instantiate(gameObject, startPosition, Quaternion.identity);
     }
 
@@ -39,6 +40,15 @@ public class PinsController : MonoBehaviour
         if (collision.gameObject.tag == "Ball" || collision.gameObject.tag == "Pin")
         {
             this.rb.useGravity = true;
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Board")
+        {
+            print("point");
+            gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
 

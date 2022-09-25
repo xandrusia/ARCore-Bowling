@@ -9,6 +9,7 @@ TagManager:
   - ResetButton
   - Ball
   - Pin
+  - LineEnd
   layers:
   - Default
   - TransparentFX
