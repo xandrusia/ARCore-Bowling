@@ -26,6 +26,9 @@ public class BallHorizontalMovement : MonoBehaviour
     private Vector3 startPosition;
     private bool boardSpawned = false;
 
+    public Vector3 startRotation;
+    public int velocity;
+
     void Start()
     {
         this.rb = gameObject.GetComponent<Rigidbody>();
@@ -44,8 +47,11 @@ public class BallHorizontalMovement : MonoBehaviour
     public void Shot()
     {
         this.isDefaultMovment = false;
-        this.rb.useGravity = true;
+       // this.rb.useGravity = true;
         this.rb.AddForce(Vector3.forward * shotSpeed);
+
+        //Allows to rotate the ball
+        transform.eulerAngles = startRotation;
     }
 
     public void ResetPosition()
@@ -59,6 +65,12 @@ public class BallHorizontalMovement : MonoBehaviour
     void Update()
     {
         CheckBoardTouch();
+
+        //Updates the ball's rotational speed every second
+        if(Input.touchCount > 0) 
+        {
+            transform.Rotate(Vector3.forward, speed * Time.deltaTime);
+        }
     }
 
     /* --------------- CHANGE DIRECTION WHEN BALL REACHES LIMITER --------------- */
