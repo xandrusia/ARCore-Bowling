@@ -12,12 +12,14 @@ public class PlaceObject : MonoBehaviour
 
     private GameObject spawnedObject;
     private ARRaycastManager raycastManager;
+    private ARPlaneManager planeManager;
 
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
     void Start()
     {
         raycastManager = GetComponent<ARRaycastManager>();
+        planeManager = GameObject.FindObjectOfType<ARPlaneManager>();
     }
 
     void Update()
@@ -37,7 +39,11 @@ public class PlaceObject : MonoBehaviour
                 // hitPose.rotation.x = 0f;
                 // hitPose.rotation.z = 0f;
                 spawnedObject = Instantiate(objectToSpawn, hitPose.position, hitPose.rotation);
-                GameObject.FindObjectOfType<ARPlaneManager>().enabled = false;
+                foreach (var trackable in planeManager.trackables)
+                {
+                    trackable.gameObject.SetActive(false);
+                }
+                // planeManager.gameObject.SetActive(false);
             }
         }
     }

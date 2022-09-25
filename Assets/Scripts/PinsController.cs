@@ -8,11 +8,13 @@ public class PinsController : MonoBehaviour
     private Vector3 startPosition;
     private Quaternion startRotation;
     private Rigidbody rb;
+    private PointManager pointManager;
 
     // Start is called before the first frame update
     void Start()
     {
         this.rb = gameObject.GetComponent<Rigidbody>();
+        this.pointManager = GameObject.FindObjectOfType<PointManager>();
         this.startPosition = gameObject.transform.position;
         this.startRotation = gameObject.transform.rotation;
     }
@@ -47,7 +49,8 @@ public class PinsController : MonoBehaviour
     {
         if (other.tag == "Board")
         {
-            print("point");
+            // print("point");
+            pointManager.AddPoint();
             gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }

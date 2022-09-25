@@ -58,6 +58,7 @@ public class BallHorizontalMovement : MonoBehaviour
     public void ResetPosition()
     {
         this.rb.velocity = Vector3.zero;
+        this.rb.angularVelocity = Vector3.zero;
         this.rb.useGravity = false;
         this.gameObject.transform.position = this.startPosition;
         this.isDefaultMovment = true;
@@ -74,13 +75,13 @@ public class BallHorizontalMovement : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "LineEnd")
-        {
-            this.ResetPosition();
-        }
-    }
+    // void OnCollisionEnter(Collision collision)
+    // {
+    //     if (collision.gameObject.tag == "LineEnd")
+    //     {
+    //         this.ResetPosition();
+    //     }
+    // }
 
     /* --------------- CHANGE DIRECTION WHEN BALL REACHES LIMITER --------------- */
 

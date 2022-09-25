@@ -6,11 +6,13 @@ public class ButtonManager : MonoBehaviour
 {
     private BallHorizontalMovement ball;
     private GameObject[] pins;
+    private PointManager pointManager;
 
     void Start()
     {
         ball = GameObject.FindGameObjectWithTag("Ball").GetComponent<BallHorizontalMovement>();
         pins = GameObject.FindGameObjectsWithTag("Pin");
+        this.pointManager = GameObject.FindObjectOfType<PointManager>();
     }
 
     void Update()
@@ -40,6 +42,7 @@ public class ButtonManager : MonoBehaviour
     private void ResetGame()
     {
         ball.ResetPosition();
+        pointManager.ResetPoints();
         foreach (var pin in pins)
         {
             if (pin != null)
