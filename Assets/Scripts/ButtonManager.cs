@@ -24,7 +24,7 @@ public class ButtonManager : MonoBehaviour
     {
         RaycastHit hit;
         // Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
         if (Physics.Raycast(ray, out hit))
         {
             if (hit.collider.tag == "ResetButton")
@@ -54,6 +54,9 @@ public class ButtonManager : MonoBehaviour
 
     private void ShotBall()
     {
-        ball.Shot();
+        if (this.ball.GetDefaultMovement())
+        {
+            ball.Shot();
+        }
     }
 }

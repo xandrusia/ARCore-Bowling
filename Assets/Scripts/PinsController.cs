@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
 
 public class PinsController : MonoBehaviour
 {
@@ -9,14 +10,17 @@ public class PinsController : MonoBehaviour
     private Quaternion startRotation;
     private Rigidbody rb;
     private PointManager pointManager;
+    private ARAnchor anchor;
 
     // Start is called before the first frame update
     void Start()
     {
         this.rb = gameObject.GetComponent<Rigidbody>();
+        this.anchor = gameObject.GetComponent<ARAnchor>();
         this.pointManager = GameObject.FindObjectOfType<PointManager>();
-        this.startPosition = gameObject.transform.position;
+        this.startPosition = transform.localPosition;
         this.startRotation = gameObject.transform.rotation;
+        // gameObject.transform.hasChanged
     }
 
 
@@ -31,10 +35,14 @@ public class PinsController : MonoBehaviour
         this.rb.velocity = Vector3.zero;
         this.rb.angularVelocity = Vector3.zero;
         this.rb.useGravity = false;
-        this.gameObject.transform.position = this.startPosition;
+        this.gameObject.transform.localPosition = this.startPosition;
         this.gameObject.transform.rotation = this.startRotation;
         gameObject.GetComponent<BoxCollider>().enabled = true;
-        // Instantiate(gameObject, startPosition, Quaternion.identity);
+    }
+
+    public void UpdateStartPosition()
+    {
+        this.startPosition = anchor.transform.position;
     }
 
     void OnCollisionEnter(Collision collision)
