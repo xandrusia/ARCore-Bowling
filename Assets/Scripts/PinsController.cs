@@ -42,6 +42,7 @@ public class PinsController : MonoBehaviour
         if (collision.gameObject.tag == "Ball" || collision.gameObject.tag == "Pin")
         {
             this.rb.useGravity = true;
+            AudioManager.GetInstance().PlayCollapsePins();
         }
     }
 

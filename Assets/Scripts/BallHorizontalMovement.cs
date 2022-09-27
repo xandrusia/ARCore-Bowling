@@ -53,6 +53,7 @@ public class BallHorizontalMovement : MonoBehaviour
 
         //Allows to rotate the ball
         transform.eulerAngles = startRotation;
+        AudioManager.GetInstance().PlayRollBall();
     }
 
     public void ResetPosition()

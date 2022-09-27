@@ -10,6 +10,9 @@ TagManager:
   - Ball
   - Pin
   - LineEnd
+  - Volume
+  - HeavyBall
+  - LightBall
   layers:
   - Default
   - TransparentFX
