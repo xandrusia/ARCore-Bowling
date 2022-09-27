@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 9138280735386393787}
   - component: {fileID: 7154534600955537267}
   - component: {fileID: 6638171185751945017}
+  - component: {fileID: 5714717006277996158}
   m_Layer: 0
   m_Name: Board 1
   m_TagString: Pin
@@ -337,6 +338,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2714e9277556af844829cf74041497e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5714717006277996158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149854038009276247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aece14757abc1744ea7498fbac2c61e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 3869676887359660412}
+  medium: {fileID: 1831261443215722504}
+  heavy: {fileID: 3907618906581012307}
 --- !u!1 &1231076441315495955
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,7 +844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4001375295091077696
 Transform:
   m_ObjectHideFlags: 0

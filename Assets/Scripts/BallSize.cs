@@ -5,14 +5,22 @@ using UnityEngine;
 
 public class BallSize : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject light;
+    
+    [SerializeField]
+    private GameObject medium;
+    
+    [SerializeField]
+    private GameObject heavy;
     private void Start()
     {
         string size=PlayerPrefs.GetString("size");
         switch (size)
-        { case "LIGHT AND FAST": gameObject.GetComponent<Rigidbody>().mass = 1;
+        { case "LIGHT AND FAST": light.SetActive(true);
                 break;
-            case "HEAVY AND PRECISE":gameObject.GetComponent<Rigidbody>().mass = 3;break;
-         default:gameObject.GetComponent<Rigidbody>().mass = 2;
+            case "HEAVY AND PRECISE":heavy.SetActive(true);break;
+         default:medium.SetActive(true);
              break;
             
         }
