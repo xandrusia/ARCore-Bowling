@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
-
 [RequireComponent(typeof(ARRaycastManager))]
 public class PlaceObject : MonoBehaviour
 {
     [SerializeField]
     private GameObject objectToSpawn;
+
+    [SerializeField]
+    private GameObject scanText;
 
     private GameObject spawnedObject;
     private ARRaycastManager raycastManager;
@@ -36,6 +38,7 @@ public class PlaceObject : MonoBehaviour
             if (spawnedObject == null)
             {
                 planeManager.enabled = false;
+                scanText.SetActive(false);
                 hitPose.rotation.y = Camera.main.transform.rotation.y;
                 spawnedObject = Instantiate(objectToSpawn, hitPose.position, hitPose.rotation);
                 foreach (var trackable in planeManager.trackables)
