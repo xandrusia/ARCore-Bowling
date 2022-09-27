@@ -21,19 +21,18 @@ public class BallHorizontalMovement : MonoBehaviour
     [SerializeField]
     private float shotSpeed = 50f;
 
-    private bool isDefaultMovment = false;
+    private bool isDefaultMovment = true;
     private Rigidbody rb;
     private Vector3 startPosition;
-    private bool boardSpawned = false;
+    private Quaternion startRotation;
 
-    public Vector3 startRotation;
     public int velocity;
 
     void Start()
     {
-        this.rb = gameObject.GetComponent<Rigidbody>();
-        this.startPosition = gameObject.transform.position;
-        StartCoroutine("ChangeDefaultMovement");
+        // this.rb = gameObject.GetComponent<Rigidbody>();
+        this.startPosition = gameObject.transform.localPosition;
+        this.startRotation = gameObject.transform.rotation;
     }
 
     void FixedUpdate()
@@ -41,66 +40,50 @@ public class BallHorizontalMovement : MonoBehaviour
         if (this.isDefaultMovment)
         {
             ChangeDirection();
-            this.transform.position += new Vector3(speed, 0, 0);
+            this.transform.position += transform.right * speed;
         }
     }
 
     public void Shot()
     {
         this.isDefaultMovment = false;
-        this.rb.useGravity = true;
-        this.rb.AddForce(Vector3.forward * shotSpeed);
-
-        //Allows to rotate the ball
-        transform.eulerAngles = startRotation;
-        AudioManager.GetInstance().PlayRollBall();
+        this.rb = gameObject.AddComponent<Rigidbody>();
+        // this.rb.useGravity = true;
+        this.rb.AddForce(transform.forward * shotSpeed);
     }
 
     public void ResetPosition()
     {
-        this.rb.velocity = Vector3.zero;
-        this.rb.angularVelocity = Vector3.zero;
-        this.rb.useGravity = false;
-        this.gameObject.transform.position = this.startPosition;
+        Destroy(this.rb);
+        this.transform.rotation = this.startRotation;
+        this.gameObject.transform.localPosition = this.startPosition;
         this.isDefaultMovment = true;
     }
 
     void Update()
     {
-        // CheckBoardTouch();
-
-        //Updates the ball's rotational speed every second
         if (Input.touchCount > 0)
         {
             transform.Rotate(Vector3.forward, speed * Time.deltaTime);
         }
     }
 
-    // void OnCollisionEnter(Collision collision)
-    // {
-    //     if (collision.gameObject.tag == "LineEnd")
-    //     {
-    //         this.ResetPosition();
-    //     }
-    // }
+    public bool GetDefaultMovement()
+    {
+        return this.isDefaultMovment;
+    }
 
     /* --------------- CHANGE DIRECTION WHEN BALL REACHES LIMITER --------------- */
 
     private void ChangeDirection()
     {
-        if (gameObject.transform.position.x >= this.rightLimiter.transform.position.x)
+        if (gameObject.transform.position.z >= this.rightLimiter.transform.position.z)
         {
             this.speed = -this.speed;
         }
-        if (gameObject.transform.position.x <= this.leftLimiter.transform.position.x)
+        if (gameObject.transform.position.z <= this.leftLimiter.transform.position.z)
         {
             this.speed = -this.speed;
         }
-    }
-
-    private IEnumerator ChangeDefaultMovement()
-    {
-        yield return new WaitForSeconds(1);
-        this.isDefaultMovment = true;
     }
 }

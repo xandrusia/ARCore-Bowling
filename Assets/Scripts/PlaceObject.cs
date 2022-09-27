@@ -35,15 +35,13 @@ public class PlaceObject : MonoBehaviour
 
             if (spawnedObject == null)
             {
+                planeManager.enabled = false;
                 hitPose.rotation.y = Camera.main.transform.rotation.y;
-                // hitPose.rotation.x = 0f;
-                // hitPose.rotation.z = 0f;
                 spawnedObject = Instantiate(objectToSpawn, hitPose.position, hitPose.rotation);
                 foreach (var trackable in planeManager.trackables)
                 {
                     trackable.gameObject.SetActive(false);
                 }
-                // planeManager.gameObject.SetActive(false);
             }
         }
     }
