@@ -283,6 +283,7 @@ Transform:
   - {fileID: 2229363626795898232}
   - {fileID: 4325704721232136763}
   - {fileID: 8874574495310304002}
+  - {fileID: 8159845532700881662}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -709,7 +710,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: -0.01, z: 0.01}
+  m_Size: {x: 0.01, y: 0, z: 0.01}
   m_Center: {x: -0.00017825537, y: -0.005, z: 0}
 --- !u!1 &1794091297467603696
 GameObject:
@@ -820,7 +821,6 @@ GameObject:
   - component: {fileID: 2469893560049950995}
   - component: {fileID: 6750250420633711225}
   - component: {fileID: 6199045665842944282}
-  - component: {fileID: 6540382243342595492}
   - component: {fileID: 1776294902637270602}
   m_Layer: 0
   m_Name: Bowing Ball Medium
@@ -907,22 +907,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.01
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &6540382243342595492
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1831261443215722504}
-  serializedVersion: 2
-  m_Mass: 0.75
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1776294902637270602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -939,8 +923,7 @@ MonoBehaviour:
   leftLimiter: {fileID: 1794091297467603696}
   ballMovementLine: {fileID: 1352372153375331409}
   speed: 0.003
-  shotSpeed: 5
-  startRotation: {x: 45, y: 0, z: 0}
+  shotSpeed: 190
   velocity: 3
 --- !u!1 &2466538692480111915
 GameObject:
@@ -1083,7 +1066,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: -0.01, z: 0.01}
+  m_Size: {x: 0.01, y: 0, z: 0.01}
   m_Center: {x: -0.00017825537, y: -0.005, z: 0}
 --- !u!1 &3116344996154292616
 GameObject:
@@ -1226,7 +1209,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: -0.01, z: 0.01}
+  m_Size: {x: 0.01, y: 0, z: 0.01}
   m_Center: {x: -0.00017825537, y: -0.005, z: 0}
 --- !u!1 &3398485284745769764
 GameObject:
@@ -1369,7 +1352,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: -0.01, z: 0.01}
+  m_Size: {x: 0.01, y: 0, z: 0.01}
   m_Center: {x: -0.00017825537, y: -0.005, z: 0}
 --- !u!1 &3732590031494027797
 GameObject:
@@ -1697,7 +1680,6 @@ GameObject:
   - component: {fileID: 5829803930842408081}
   - component: {fileID: 3778101995287236501}
   - component: {fileID: 3908995571230674360}
-  - component: {fileID: 2590863930985962504}
   - component: {fileID: 7019346182679581169}
   m_Layer: 0
   m_Name: Bowing Ball Heavy
@@ -1784,22 +1766,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.01
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &2590863930985962504
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3907618906581012307}
-  serializedVersion: 2
-  m_Mass: 0.75
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &7019346182679581169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1817,7 +1783,6 @@ MonoBehaviour:
   ballMovementLine: {fileID: 1352372153375331409}
   speed: 0.003
   shotSpeed: 5
-  startRotation: {x: 45, y: 0, z: 0}
   velocity: 3
 --- !u!1 &4044609245089660092
 GameObject:
@@ -2353,7 +2318,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: -0.01, z: 0.01}
+  m_Size: {x: 0.01, y: 0, z: 0.01}
   m_Center: {x: -0.00017825537, y: -0.005, z: 0}
 --- !u!1 &4867678374307807794
 GameObject:
@@ -2631,7 +2596,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: -0.01, z: 0.01}
+  m_Size: {x: 0.01, y: 0, z: 0.01}
   m_Center: {x: -0.00017825537, y: -0.005, z: 0}
 --- !u!1 &6244536541237287591
 GameObject:
@@ -2774,7 +2739,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: -0.01, z: 0.01}
+  m_Size: {x: 0.01, y: 0, z: 0.01}
   m_Center: {x: -0.00017825537, y: -0.005, z: 0}
 --- !u!1 &6439912235059808939
 GameObject:
@@ -2917,7 +2882,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: -0.01, z: 0.01}
+  m_Size: {x: 0.01, y: 0, z: 0.01}
   m_Center: {x: -0.00017825537, y: -0.005, z: 0}
 --- !u!1 &6872450334068466102
 GameObject:
@@ -3157,7 +3122,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: -0.01, z: 0.01}
+  m_Size: {x: 0.01, y: 0, z: 0.01}
   m_Center: {x: -0.00017825537, y: -0.005, z: 0}
 --- !u!1 &8005613937098628186
 GameObject:
@@ -3193,7 +3158,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9051295354349478094}
-  m_RootOrder: 0
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6643249609321483074
 MeshFilter:
@@ -3766,7 +3731,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: -0.01, z: 0.01}
+  m_Size: {x: 0.01, y: 0, z: 0.01}
   m_Center: {x: -0.00017825537, y: -0.005, z: 0}
 --- !u!1 &9182619530101367446
 GameObject:
