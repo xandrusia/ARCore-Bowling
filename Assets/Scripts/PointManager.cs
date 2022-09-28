@@ -33,6 +33,7 @@ public class PointManager : MonoBehaviour
     {
         this.points++;
         this.UpdateText();
+        AudioManager.GetInstance().PlayCountPoint();
     }
 
     private void UpdateText()

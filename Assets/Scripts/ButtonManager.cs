@@ -36,12 +36,14 @@ public class ButtonManager : MonoBehaviour
         {
             if (hit.collider.tag == "ResetButton")
             {
-                ResetGame();
+                this.ResetGame();
+                AudioManager.GetInstance().PlayMenuItemHover();
             }
 
             if (hit.collider.tag == "ShotButton")
             {
                 this.ShotBall();
+                AudioManager.GetInstance().PlayMenuItemHover();
             }
         }
     }
@@ -64,6 +66,7 @@ public class ButtonManager : MonoBehaviour
         if (this.ball.GetDefaultMovement())
         {
             ball.Shot();
+            AudioManager.GetInstance().PlayRollBall();
         }
     }
 }

@@ -30,6 +30,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private AudioSource menuItemHover;
 
+    [SerializeField]
+    private AudioSource countPoint;
+
 
     public void PlayRollBall()
     {
@@ -44,5 +47,10 @@ public class AudioManager : MonoBehaviour
     public void PlayMenuItemHover()
     {
         menuItemHover.Play();
+    }
+
+    public void PlayCountPoint()
+    {
+        countPoint.Play();
     }
 }
