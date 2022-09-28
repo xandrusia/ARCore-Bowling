@@ -245,10 +245,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9051295354349478094}
   - component: {fileID: 2974940224700988614}
-  - component: {fileID: 9138280735386393787}
   - component: {fileID: 7154534600955537267}
   - component: {fileID: 6638171185751945017}
   - component: {fileID: 5714717006277996158}
+  - component: {fileID: 9138280735386393787}
   m_Layer: 0
   m_Name: Board 1
   m_TagString: Pin
@@ -301,18 +301,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DestroyOnRemoval: 1
---- !u!114 &9138280735386393787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1149854038009276247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2714e9277556af844829cf74041497e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7154534600955537267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,9 +338,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aece14757abc1744ea7498fbac2c61e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  light: {fileID: 3869676887359660412}
-  medium: {fileID: 1831261443215722504}
-  heavy: {fileID: 3907618906581012307}
+  ballLight: {fileID: 3869676887359660412}
+  ballMedium: {fileID: 1831261443215722504}
+  ballHeavy: {fileID: 3907618906581012307}
+--- !u!114 &9138280735386393787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149854038009276247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2714e9277556af844829cf74041497e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1231076441315495955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,7 +1597,7 @@ Transform:
   m_GameObject: {fileID: 3869676887359660412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -0.71}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9051295354349478094}
@@ -1712,8 +1712,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3907618906581012307}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -0.71}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalPosition: {x: 0, y: 1, z: 0.11}
+  m_LocalScale: {x: 80, y: 80, z: 80}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9051295354349478094}
@@ -1798,7 +1798,7 @@ MonoBehaviour:
   leftLimiter: {fileID: 1794091297467603696}
   ballMovementLine: {fileID: 1352372153375331409}
   speed: 0.003
-  shotSpeed: 5
+  shotSpeed: 190
   velocity: 3
 --- !u!1 &4044609245089660092
 GameObject:

@@ -11,8 +11,9 @@ public class BallSizeManager : MonoBehaviour
 
     private void Start()
     {
-        m_Dropdown=gameObject.GetComponent<TMP_Dropdown>();
-        m_Dropdown.onValueChanged.AddListener(delegate {
+        m_Dropdown = gameObject.GetComponent<TMP_Dropdown>();
+        m_Dropdown.onValueChanged.AddListener(delegate
+        {
             DropdownValueChanged(m_Dropdown);
         });
     }
@@ -21,5 +22,5 @@ public class BallSizeManager : MonoBehaviour
     {
         PlayerPrefs.SetString("size", change.captionText.text);
     }
-    
+
 }

@@ -6,25 +6,55 @@ using UnityEngine;
 public class BallSize : MonoBehaviour
 {
     [SerializeField]
-    private GameObject light;
-    
+    private GameObject ballLight;
+
     [SerializeField]
-    private GameObject medium;
-    
+    private GameObject ballMedium;
+
     [SerializeField]
-    private GameObject heavy;
+    private GameObject ballHeavy;
+
+    private GameObject activeBall;
+
+    public GameObject GetActiveBall()
+    {
+        return activeBall;
+    }
+
     private void Start()
     {
-        string size=PlayerPrefs.GetString("size");
+        UpdateBall();
+    }
+
+    public void UpdateBall()
+    {
+        InactiveBalls();
+        string size = PlayerPrefs.GetString("size");
+        print("size" + size);
         switch (size)
-        { case "LIGHT AND FAST": light.SetActive(true);
+        {
+            case "LIGHT AND FAST":
+                this.activeBall = ballLight;
+                ballLight.SetActive(true);
                 break;
-            case "HEAVY AND PRECISE":heavy.SetActive(true);break;
-         default:medium.SetActive(true);
-             break;
-            
+            case "HEAVY AND PRECISE":
+                this.activeBall = ballHeavy;
+                ballHeavy.SetActive(true);
+                break;
+            default:
+                this.activeBall = ballMedium;
+                ballMedium.SetActive(true);
+                break;
+
         }
     }
 
-   
+    private void InactiveBalls()
+    {
+        this.ballHeavy.SetActive(false);
+        this.ballLight.SetActive(false);
+        this.ballMedium.SetActive(false);
+    }
+
+
 }

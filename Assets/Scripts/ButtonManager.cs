@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ButtonManager : MonoBehaviour
 {
+
     private BallHorizontalMovement ball;
     private GameObject[] pins;
     private PointManager pointManager;
 
     void Start()
     {
-        ball = GameObject.FindGameObjectWithTag("Ball").GetComponent<BallHorizontalMovement>();
+        ball = gameObject.GetComponent<BallSize>().GetActiveBall().GetComponent<BallHorizontalMovement>();
         pins = GameObject.FindGameObjectsWithTag("Pin");
         this.pointManager = GameObject.FindObjectOfType<PointManager>();
     }
@@ -20,11 +21,17 @@ public class ButtonManager : MonoBehaviour
         CheckButtonTouch();
     }
 
+    public void UpdateBall()
+    {
+        ball = gameObject.GetComponent<BallSize>().GetActiveBall().GetComponent<BallHorizontalMovement>();
+    }
+
+
     private void CheckButtonTouch()
     {
         RaycastHit hit;
-        // Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
         Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+        // Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
             if (hit.collider.tag == "ResetButton")

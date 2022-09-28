@@ -28,6 +28,13 @@ public class BallHorizontalMovement : MonoBehaviour
 
     public int velocity;
 
+    void Awake()
+    {
+        this.startPosition = gameObject.transform.localPosition;
+        this.startRotation = gameObject.transform.rotation;
+        this.isDefaultMovment = true;
+    }
+
     void Start()
     {
         // this.rb = gameObject.GetComponent<Rigidbody>();
