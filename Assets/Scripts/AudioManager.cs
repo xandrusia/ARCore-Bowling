@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        AudioListener.volume = PlayerPrefs.GetFloat("Volume");
         instance = this;
     }
 
