@@ -8,12 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 9ead0d28e5aad244eae94f5bb8625140
-  - enabled: 0
-    path: Assets/Scenes/FinalUpdated.unity
-    guid: 57c96cf23da289346bc32041b24f2f2f
   - enabled: 1
     path: Assets/Scenes/Updated.unity
     guid: 70a275cf0c2763a4ab9c2e9404aef58f
+  - enabled: 0
+    path: Assets/Scenes/ProScene.unity
+    guid: 98dfd640f13e1d648a16a383a2bf2aaf
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 4f3cb2feefcb0db44bc3d1e1f0cb179a, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 5b9fd7ca846f91e46a677cae79f580f9, type: 2}
